@@ -1,0 +1,57 @@
+{
+  "name": "laboratory-exams",
+  "version": "1.0.0",
+  "description": "test crud laboratory and exams",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "predev": "npm run swagger",
+    "prebuild": "npm run swagger",
+    "build": "tsc",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spce\"",
+    "swagger": "tsoa spec"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngelrojas/laboratory-exams.git"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "docker",
+    "docker-compose",
+    "postgresql"
+  ],
+  "author": "ngel-rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngelrojas/laboratory-exams/issues"
+  },
+  "homepage": "https://github.com/ngelrojas/laboratory-exams#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^15.12.3",
+    "@types/swagger-ui-express": "^4.1.2",
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.1.6",
+    "tsoa": "^3.8.0",
+    "typeorm": "^0.2.34"
+  }
+}
