@@ -2,15 +2,14 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    ManyToOne,
     CreateDateColumn,
     UpdateDateColumn,
-    JoinColumn
+    OneToMany
 } from 'typeorm';
 
 import {Laboratory} from './laboratory';
 
-enum TypeExam {
+export enum TypeExam {
     ANALISE = 'ANALISE',
     CLINIC = 'CLINIC',
     IMAGEN = 'IMAGEN'
@@ -26,17 +25,15 @@ export class Exam {
     name!: string;
 
     @Column({
-        type: 'text',
-        array: true
+        type: 'text'
     })
-    tipo: TypeExam[]=[];
+    tipo!: TypeExam;
 
     @Column()
     status!: boolean;
 
-    @ManyToOne((_type) => Laboratory, (laboratory: Laboratory) => laboratory.id)
-    @JoinColumn()
-    laboratory!: Laboratory;
+    @OneToMany((_type) => Laboratory, (laboratory: Laboratory) => laboratory.id)
+    laboratories!: Laboratory[];
     
     @CreateDateColumn()
     createdAt!: Date;
